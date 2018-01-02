@@ -8,6 +8,11 @@ import cloudinary from 'cloudinary';
 //     api_secret: '43dwAat9zBMKpQey6NbzklQ6CGo'
 // };
 
+// let config = {
+//         cloud_name: 'ayeayemaw',
+//         api_key: '426745179388439',
+//         api_secret: 'aGZqL_UzL_-3iO6rWItrW3onlr8'
+//     };
 let config = {
         cloud_name: 'shopkeeper-mt',
         api_key: '156887998232998',
@@ -20,6 +25,9 @@ if (env !== "development"){
         cloud_name: 'shopkeeper-mt',
         api_key: '156887998232998',
         api_secret: 'XI0icVrIctxGn9P7Z8pEJU0b49A'
+        // cloud_name: 'ayeayemaw',
+        // api_key: '426745179388439',
+        // api_secret: 'aGZqL_UzL_-3iO6rWItrW3onlr8'
     };
 }
 
@@ -35,7 +43,7 @@ const c={
                 if(error)
                     reject(error);
                 else
-                    response(result);   
+                    response(result);
             });
         });
     },
@@ -48,7 +56,7 @@ const c={
                 if(error)
                     reject(error);
                 else
-                    response(result);   
+                    response(result);
             });
         });
     },
@@ -67,4 +75,3 @@ const c={
 
 };
 export default c;
-
