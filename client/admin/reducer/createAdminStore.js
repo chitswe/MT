@@ -3,11 +3,22 @@
  */
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import AdminSite from './AdminSite';
+import User from './User';
+import UserAccount from './UserAccount';
+import Login from './Login';
+import Tag from './Tag';
+import BlogPost from './BlogPost';
+
 export default ({client})=>{
     const store = createStore(
         combineReducers({
             csrf:state=>(state?state:''),
             AdminSite,
+            User,
+            UserAccount,
+            Login,
+            Tag,
+            BlogPost,
             apollo: client.reducer()
         }),
         client.initialState, // initial state
