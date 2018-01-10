@@ -114,8 +114,8 @@ export const resolver = {
 
       });
     },
-    updateBlogPost(_,{id,blogPost},context) {
-        return db.sequelize.transaction(t=>{
+    updateBlogPost(_,{id,blogPost},context){
+      return db.sequelize.transaction(t=>{   
             return db.BlogPost.findById(id,{transaction:t})
             .then(i=>{
               if(!i)

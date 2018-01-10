@@ -52,6 +52,8 @@ import { createServer } from 'http';
 
 import {Helmet} from "react-helmet";
 import { SubscriptionServer } from 'subscriptions-transport-ws';
+import {blogPostHandler,previewHandler,saveContentHandler} from './server/blogpost/BlogPost';
+
 const env = process.env.NODE_ENV;
 
 global.appRoot = path.resolve(__dirname);
@@ -83,8 +85,8 @@ const appRouter = new Router();
 const port =env === 'test'? 4242: 4242;
 const proxyPort = 4240;
 const graphqlUrl=`http://localhost:${port}/graphql`;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb'}));
 app.use(passport.initialize());
 app.use(cookieParser());
 app.disable('x-powered-by');
@@ -155,7 +157,7 @@ function renderHtml(req,res,renderProps,isAdminSite){
         store = createSiteStore({client});
     }
 
-    const component = (     
+    const component = (
         <MuiThemeProvider muiTheme={muiTheme}>
             <ApolloProvider client={client} store={store}>
                 <RouterContext {...renderProps} />
@@ -214,6 +216,10 @@ app.get('/admin*',csrfProtection,(req, res) => {
     });
 });
 
+app.get('/blogPost',blogPostHandler);
+app.post('/saveContent',saveContentHandler);
+app.get('/preview',previewHandler);
+
 app.get('*',csrfProtection,(req, res) => {
     match({routes:siteRoutes,location:req.originalUrl},(error,redirectLocation,renderProps)=>{
                if(redirectLocation)
@@ -264,6 +270,3 @@ migration.up().then((migrations) => {
       });
     });
 });
-
-
-

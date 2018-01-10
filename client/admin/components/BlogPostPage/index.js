@@ -12,6 +12,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import BlogPostStateSelectField from '../../../common/BlogPostStateSelectField';
 import ImageUploadEditor from '../BlogPost/ImageUploadEditor';
+import EditorAttachFile from 'material-ui/svg-icons/editor/attach-file';
+import IconButton from 'material-ui/IconButton';
+
 class BlogPostPage extends React.Component{
 	constructor(){
 		super(...arguments);
@@ -42,6 +45,20 @@ saveBlogPost(closeAfter=true) {
 			this.setState({busy:false,busyMessage:'',errorText:''});
 			showSnackbar('Update changes successfully.');
 		 });
+}
+
+editContent(content) {
+	let {selectedBlogPost} = this.props;
+	let {id,Content} = selectedBlogPost ? selectedBlogPost : {};
+	window.location=`/BlogPost?BlogPostId=${id}&Content=${content}`;
+
+}
+
+previewContent(content) {
+	let {selectedBlogPost} = this.props;
+	let {id,Content} = selectedBlogPost ? selectedBlogPost : {};
+	window.location=`/preview?BlogPostId=${id}&Content=${content}`;
+
 }
 
 render(){
@@ -77,6 +94,14 @@ render(){
 			 	              floatingLabelText="State"
 			 	              hintText="State"
 			 	            />
+										<br/>
+										Attach Content in Editor
+										<IconButton onClick={this.editContent.bind(this)}>
+												<EditorAttachFile/>
+										</IconButton>
+										{Content ? (
+											<FlatButton label="Preview" primary={true} onClick={this.previewContent.bind(this)}/>
+										) : null }
 									</div>
 									<div style={{flexGrow:1}}>
 										<TextField style={{width:'300px',textAlign:'left'}} id="BriefContent" multiLine={true} rows={5} floatingLabelText="BriefContent" errorText={errors.BriefContent} value={BriefContent} onChange={(e)=>{this.props.editBlogPost({BriefContent:e.target.value});}}/>

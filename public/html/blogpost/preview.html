@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+  <title>Content medium-editor</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../bower_components/medium-editor/dist/css/medium-editor.min.css">
+  <link rel="stylesheet" href="../../bower_components/medium-editor/dist/css/themes/default.css" id="medium-editor-theme">
+  <link rel="stylesheet" href="../../bower_components/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin-frontend.min.css">
+  <!-- Font Awesome for awesome icons. You can redefine icons used in a plugin configuration -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../../bower_components/medium-editor/dist/js/medium-editor.js"></script>
+  <script src="../../bower_components/handlebars/handlebars.runtime.min.js"></script>
+  <script src="../../bower_components/jquery-sortable/source/js/jquery-sortable-min.js"></script>
+  <!-- Unfortunately, jQuery File Upload Plugin has a few more dependencies itself -->
+  <script src="../../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+  <script src="../../bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+  <script src="../../bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../bower_components/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css">
+  <!-- JS -->
+  <script src="../../bower_components/medium-editor-insert-plugin/dist/js/medium-editor-insert-plugin.min.js"></script>
+
+  <style type="text/css">
+    .medium-insert-images.medium-insert-images-grid.small-grid figure {
+      width: 10%;
+    }
+
+    @media (max-width: 750px) {
+      .medium-insert-images.medium-insert-images-grid.small-grid figure {
+        width: 20%;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .medium-insert-images.medium-insert-images-grid.small-grid figure {
+        width: 25%;
+      }
+    }
+
+
+    button,
+    .button,
+    input[type='submit'] {
+      background-color: #FFAB40;
+      border-radius: 3px;
+      border: none;
+      color: #fff;
+      text-align: center;
+    }
+
+    .button {
+      text-decoration: none;
+      padding-top: 8px;
+    }
+  </style>
+  <script>
+    // function loadcontent() {
+    //   var editor = new MediumEditor('.editable');
+    //   var Content = "{{Content}}"
+    //   editor.addElements(Content);
+    //   var allContents = editor.serialize();
+    //   var elContent = allContents["element-0"].value;
+    //   window.alert(elContent);
+    //   $(function() {
+    //     $('.editable').mediumInsert({
+    //       editor: editor
+    //     });
+    //   });
+    // }
+  </script>
+</head>
+
+<body>
+  <a href="https://github.com/orthes/medium-editor-insert-plugin">
+  </a>
+  <div id="container">
+    <div class="editable" data-placeholder="Type some text">
+      {{{Content}}}
+    </div>
+  </div>
+  <!--
+  <script>
+    var editor = new MediumEditor('.editable');
+    var allContents = editor.serialize();
+    var elContent = allContents["element-0"].value;
+    $(function() {
+      $('.editable').mediumInsert({
+        editor: editor
+      });
+    });
+  </script> -->
+</body>
+
+</html>

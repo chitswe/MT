@@ -18,7 +18,6 @@ import {formatDateTime} from '../../../../common/DateTimeParser';
 import BlogPostStateLabel from '../../../common/BlogPostStateLabel';
 import {toBlogPostState} from '../../../../common/BlogPostState';
 import NumberEditor from '../../../common/editor/NumberEditor';
-
 class BlogPostGrid extends React.Component{
   constructor(){
          super(...arguments);
@@ -73,7 +72,8 @@ class BlogPostGrid extends React.Component{
                      canGrow:false,
                      textAlign:'right',
                      captionAlign:'center',
-                     hideAt:'xs'
+                     hideAt:'xs',
+
                 },
                  {
                    caption:'CreatedHistory',

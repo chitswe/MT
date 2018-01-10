@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invalid payment request</title>
+  <style type="text/css">
+    @font-face {
+      font-family: 'Sanpya';
+      src: url('../font/Sanpya.ttf');
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="password"],
+    button,
+    .button {
+
+      -webkit-box-sizing: border-box;
+
+      -moz-box-sizing: border-box;
+
+      box-sizing: border-box;
+
+      -webkit-background-clip: padding;
+
+      -moz-background-clip: padding;
+
+      background-clip: padding-box;
+
+      -webkit-border-radius: 0;
+
+      -moz-border-radius: 0;
+
+      -ms-border-radius: 0;
+
+      -o-border-radius: 0;
+
+      border-radius: 0;
+
+      -webkit-appearance: none;
+
+      background-color: #fff;
+
+      color: #000;
+
+      outline: 0;
+
+      margin: 0;
+
+      padding: 0;
+
+      text-align: left;
+
+      font-size: 1em;
+
+      height: 1em;
+
+      vertical-align: middle;
+
+      border: 1px solid #F44336;
+      border-radius: 1px;
+      box-shadow: none;
+      box-sizing: border-box;
+      color: rgb(103, 106, 108);
+      font-size: 14px;
+      height: 34px;
+      line-height: 20px;
+      padding: 6px 12px;
+      transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+      display: block;
+      width: 100%;
+      margin: 8px;
+    }
+
+    * {
+      font-family: Sanpya, Zawgyi-One, Roboto, sans-serif !important;
+    }
+
+    button,
+    .button {
+      background-color: #FFAB40;
+      border-radius: 3px;
+      border: none;
+      color: #fff;
+      text-align: center;
+    }
+
+    .button {
+      text-decoration: none;
+      padding-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  {{message}}
+  <br/> Http Status Code : {{respCode}}
+</body>
+
+</html>
