@@ -27,15 +27,30 @@ class BlogPostPage extends React.Component{
 		isOverviewEditorOpen:false
 		};
 	}
+componentDidMount() {
+ let {BlogPostById} = this.props;
+ this.updateStore(BlogPostById);
+}
 
+updateStore(blogPost)  {
+	let {editBlogPost} = this.props;
+	editBlogPost(blogPost);
+}
 componentWillReceiveProps(nextProps){
+
 		let {BlogPostById,editBlogPost,ArrOfTag,pushTag} = nextProps
-		let {Title,Image,State,AuthorId,User,BriefContent,url,Content,id,Tag} = BlogPostById? BlogPostById:{};
-		if(BlogPostById !== this.props.BlogPostById) {
-			editBlogPost({id,Title,State,AuthorId,User,Image,url,BriefContent,Content})
+		let {Title,Image,State,AuthorId,User,BriefContent,Content,id,Tag} = BlogPostById? BlogPostById:{};
+		let currentBlogPostById = this.props.BlogPostById;
+		let nextLoading = nextProps.loadingBlogPostById;
+		let currentLoading = this.props.loadingBlogPostById;
+		if(currentLoading && !nextLoading && BlogPostById ) {
+			this.updateStore(BlogPostById);
 			pushTag(Tag.map((tag)=>({key:tag.id,label:tag.Name})));
-  	}
-	}
+		}else if(currentBlogPostById !== BlogPostById && BlogPostById) {
+			this.updateStore(BlogPostById);
+			pushTag(Tag.map((tag)=>({key:tag.id,label:tag.Name})));
+		}
+}
 
 saveBlogPost(closeAfter=true) {
  let {selectedBlogPost,updateBlogPost,showSnackbar} = this.props;
